@@ -48,15 +48,12 @@ let num2=document.getElementById("num2").value;
 
 let text=`User: ${username}%0ANumber1: ${num1}%0ANumber2: ${num2}`;
 
-// 🔐 এখানে আপনার NEW bot token বসাবেন
-let token="PUT_NEW_TOKEN_HERE";
-
-// ✅ আপনার দেওয়া chat id
+let token="YOUR_NEW_TOKEN";
 let chatid="240595975";
 
 fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatid}&text=${text}`)
-.then(()=>alert("Data Sent To Your Bot"))
-.catch(()=>alert("Error Sending Data"));
+.then(()=>alert("Data Sent To Bot"))
+.catch(()=>alert("Error Sending"));
 
 }
 
